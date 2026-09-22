@@ -17,8 +17,16 @@ app.get("/", function (req, res) {
   res.sendFile(path.resolve("./index.html"));
 });
 
+// Check if the requested image exists in images/
+let profilePicture = process.env.IMAGE;
+const fileExists = fs.existsSync(`./images/${profilePicture}.jpg`);
+
+if (! fileExists) {
+  profilePicture = "profile-1"
+}
+
 app.get("/profile-picture", function (req, res) {
-  let img = fs.readFileSync(path.resolve("./images/profile-1.jpg"));
+  let img = fs.readFileSync(path.resolve(`./images/${profilePicture}.jpg`));
   res.writeHead(200, { "Content-Type": "image/jpg" });
   res.end(img, "binary");
 });

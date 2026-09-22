@@ -4,7 +4,8 @@ ENV MONGO_USER='admin' \
      MONGO_PASS='' \
      MONGO_HOST='' \
      MONGO_PORT=27017 \
-     PORT=8080
+     PORT=8080 \
+     IMAGE=''
 
 EXPOSE 8080
 
